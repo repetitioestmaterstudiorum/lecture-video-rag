@@ -1,0 +1,15 @@
+[project]
+name = "lecture-video-rag"
+version = "0.1.0"
+description = "Lecture Video Search and Question Answering using RAG - Master's Thesis Artifact"
+authors = [
+    {name = "repetitioestmaterstudiorum", email = "44611591+repetitioestmaterstudiorum@users.noreply.github.com"},
+]
+dependencies = []
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
