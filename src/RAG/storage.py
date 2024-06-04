@@ -6,12 +6,12 @@ import os
 import numpy as np
 from OCR import easyocr, tesseract
 from OCR.utils import combine_sequences
-from ASR import whisper
+from ASR import whisp
 from ASR.utils import get_sentences_from_whisper_result
 from utils.text import combine_sentences_overlapped
 from concurrent.futures import Future
 from DB.chroma import DB
-from typing import Literal, List
+from typing import Literal
 from utils.torch import detect_gpu
 from LLM.llama_cpp_model import LlamaCppLlm
 from utils.hash import hash_256, hash_256_tob, encode_base64
@@ -55,11 +55,11 @@ class Storage:
         db_path: str = None,
         embedding_model: str = 'nomic-ai/nomic-embed-text-v1',
         collection_space: Literal['cosine', 'l2', 'ip'] = 'cosine',
-        asr_out_len: int = 1000,
+        asr_chunk_size: int = 1000,
         asr_overlap: int = 200,
         asr_whisper_model_name: str = 'tiny.en',
         asr_postprocessing_fn: str | None = None,
-        ocr_out_len: int = 300,
+        ocr_chunk_size: int = 300,
         ocr_overlap: int = 50,
         ocr_capture_every_n_s: int = 10,
         ocr_frame_diff_threshold: int = 15,
@@ -72,11 +72,11 @@ class Storage:
         device: str = detect_gpu(),
     ):
         self.db = DB(db_path)
-        self.asr_out_len = asr_out_len
+        self.asr_chunk_size = asr_chunk_size
         self.asr_overlap = asr_overlap
         self.asr_whisper_model_name = asr_whisper_model_name
         self.asr_postprocessing_fn = asr_postprocessing_fn
-        self.ocr_out_len = ocr_out_len
+        self.ocr_chunk_size = ocr_chunk_size
         self.ocr_overlap = ocr_overlap
         self.ocr_capture_every_n_s = ocr_capture_every_n_s
         self.ocr_frame_diff_threshold = ocr_frame_diff_threshold
@@ -93,14 +93,14 @@ class Storage:
                 f"An LLM is required when using 'ocr_llm_preprompt'.")
 
         # Calculate the collection name from arguments
-        store_config = locals()
-        store_config.pop('self')
-        store_config.pop('db_path')
-        store_config.pop('llm')
+        storage_config = locals()
+        storage_config.pop('self')
+        storage_config.pop('db_path')
+        storage_config.pop('llm')
         if llm:
-            store_config['llm.model_name'] = llm.model_name
-        store_config.pop('device')
-        sc_hash = hash_256_tob(store_config)
+            storage_config['llm.model_name'] = llm.model_name
+        storage_config.pop('device')
+        sc_hash = hash_256_tob(storage_config)
         # Collection name max len: 63, therefore base64 encoding
         sc_hash_base64 = encode_base64(sc_hash)
         self.collection_name = f"lecture-videos-{sc_hash_base64.rstrip('=')}"
@@ -117,7 +117,7 @@ class Storage:
             raise ValueError(
                 f"Not implemented embedding model: {embedding_model}")
 
-        self.__initialize_cache()
+        self._initialize_cache()
 
     def add_video(
         self,
@@ -140,13 +140,13 @@ class Storage:
         debug and print("Preprocessing...")
         if parallel:
             future = Future()
-            coroutine = self.__process_video_async(video_path, debug)
+            coroutine = self._process_video_async(video_path, debug)
             threading.Thread(target=run_async_coroutine,
                              args=(coroutine, future)).start()
             asr_out, ocr_out = future.result()
         else:
-            asr_out = self.__asr_video_to_text(video_path, debug)
-            ocr_out = self.__ocr_video_to_text(video_path, debug)
+            asr_out = self._asr_video_to_text(video_path, debug)
+            ocr_out = self._ocr_video_to_text(video_path, debug)
         print(f"\nASR segments: {len(asr_out)}, OCR segments: {len(ocr_out)}")
 
         # Postprocessing
@@ -155,7 +155,7 @@ class Storage:
                 asr_out)
 
         asr_sequences = combine_sentences_overlapped(
-            asr_out, out_len=self.asr_out_len, overlap=self.asr_overlap)
+            asr_out, out_len=self.asr_chunk_size, overlap=self.asr_overlap)
 
         if self.ocr_postprocessing_fn:
             ocr_out = ocr_postprocessing_fns[self.ocr_postprocessing_fn](
@@ -164,10 +164,10 @@ class Storage:
         if self.ocr_llm_preprompt and self.llm:
             debug and print(f"Cleaning OCR text with LLM...")
             for seq in ocr_out:
-                seq['text'] = self.__clean_ocr_text_with_llm(seq['text'])
+                seq['text'] = self._clean_ocr_text_with_llm(seq['text'])
 
         ocr_sequences = combine_sentences_overlapped(
-            sentences=ocr_out, out_len=self.ocr_out_len, overlap=self.ocr_overlap)
+            sentences=ocr_out, out_len=self.ocr_chunk_size, overlap=self.ocr_overlap)
 
         # Embedding and inserting into vector DB
         debug and print("Embedding and inserting into vector DB...")
@@ -202,12 +202,12 @@ class Storage:
                     'ocr_else_asr_text': ocr_sequence_comb['text'] if ocr_sequence_comb else asr_sequence['text'],
                 })
 
-            self.__embed_insert_sequences(
+            self._embed_insert_sequences(
                 asr_ocr_avg_sequences, 'asr-ocr-avg', unique_video_name)
         else:
-            self.__embed_insert_sequences(
+            self._embed_insert_sequences(
                 asr_sequences, 'asr', unique_video_name)
-            self.__embed_insert_sequences(
+            self._embed_insert_sequences(
                 ocr_sequences, 'ocr', unique_video_name)
 
     def remove_video(self, unique_video_name: str):
@@ -237,8 +237,8 @@ class Storage:
             return False
 
     @cache_method
-    def __asr_video_to_text(self, video_path: str, debug=False):
-        asr_output = whisper.video_to_text(
+    def _asr_video_to_text(self, video_path: str, debug=False):
+        asr_output = whisp.video_to_text(
             video_file_path=video_path,
             model_name=self.asr_whisper_model_name,
             device=self.device
@@ -247,7 +247,7 @@ class Storage:
         return asr_output['segments']
 
     @cache_method
-    def __ocr_video_to_text(self, video_path: str, debug=False):
+    def _ocr_video_to_text(self, video_path: str, debug=False):
         ocr_args = {
             'video_file_path': video_path,
             'capture_every_n_seconds': self.ocr_capture_every_n_s,
@@ -266,7 +266,7 @@ class Storage:
         debug and print(f"OCR done.")
         return ocr_output
 
-    def __embed_insert_sequences(self, sequences, source: str, unique_video_name: str):
+    def _embed_insert_sequences(self, sequences, source: str, unique_video_name: str):
         if source == 'asr-ocr-avg':
             print("Averaging ASR and OCR sequences.")
             asr_texts = list(map(lambda s: s['asr_text'], sequences))
@@ -302,21 +302,21 @@ class Storage:
             documents=texts
         )
 
-    async def __process_video_async(self, video_path: str, debug=False):
+    async def _process_video_async(self, video_path: str, debug=False):
         asr_future = asyncio.to_thread(
-            self.__asr_video_to_text, video_path, debug)
+            self._asr_video_to_text, video_path, debug)
         ocr_future = asyncio.to_thread(
-            self.__ocr_video_to_text, video_path, debug)
+            self._ocr_video_to_text, video_path, debug)
         return await asyncio.gather(asr_future, ocr_future)
 
-    def __clean_ocr_text_with_llm(self, ocr_text: str):
+    def _clean_ocr_text_with_llm(self, ocr_text: str):
         prompt = (f"OCR text:\n{ocr_text}\n\n{self.ocr_llm_preprompt}")
         # 1 token is appr. 4 characters, so twice the length of the OCR text (https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)
         max_tokens = len(ocr_text) / 2
         ocr_text_cleaned = self.llm.generate(prompt, max_tokens)
         return ocr_text_cleaned
 
-    def __initialize_cache(self):
+    def _initialize_cache(self):
         if not self.cache_dir:
             self.cache_dir = os.path.join(os.getcwd(), 'asr-ocr-cache')
 
