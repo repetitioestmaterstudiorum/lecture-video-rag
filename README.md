@@ -6,17 +6,17 @@ This is a proof of concept for a lecture video search and question answering sys
 
 ## Code Organization
 
-- `src` contains the RAG logic
-- `dev` contains a Jupyter notebook that uses logic in `src` and demonstrates a simple use case. It also contains the qa-dataset.py file which was used as question answering dataset for the thesis research project
+- `src` contains the RAG logic.
+- `dev` contains a Jupyter notebook that uses logic in `src` and demonstrates a simple use case. It also contains the `qa-dataset.py` file which was used as question answering dataset for the thesis research project, as well as the hyperparameters we found to be optimal for our dataset.
 
 ## Development Setup
 
 1. Ensure you have the package manager pdm installed: https://pdm-project.org/en/latest/ (on MacOS: `brew install pdm`)
 2. Install the necessary system dependencies (see below)
-3. Run `pdm install` to install all dependencies
+3. Run `pdm install -d` to install all dependencies
 4. Follow Llama-CPP-Python instructions (see below)
 5. Rename the `example.env` file in the `dev` folder to `.env` and fill in the necessary environment variables
-6. Run the example.ipynb notebook in the `dev` folder to see the system in action
+6. Run the code in `dev/example.ipynb` to see how to use the RAG logic
 
 ### System Dependencies
 
@@ -32,11 +32,6 @@ This is a proof of concept for a lecture video search and question answering sys
 
 - Watch CUDA GPU processes: `watch -n 1 nvidia-smi`
 - Watch CPU processes: `htop`
-
-## Testing
-
-- `pip install pytest`
-- `pytest` or `pytest tests/{some file}.py`
 
 ## TODO
 
