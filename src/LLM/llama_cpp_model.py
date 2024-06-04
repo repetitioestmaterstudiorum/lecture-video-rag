@@ -114,11 +114,15 @@ class LlamaCppLlm:
             raise ValueError(
                 f"A defined model_name is required! Possible values:\n{possible_model_names}")
 
+        if not os.path.exists(data_path):
+            print(f"Creating data path for LLM: {data_path}")
+            os.makedirs(data_path)
+
         model_file_name = self.model_config['url'].split('/')[-1]
         model_path = os.path.join(data_path, model_file_name)
 
         if not os.path.exists(model_path):
-            print(f"Downloading model...")
+            print(f"Downloading model {model_name}...")
             wget.download(self.model_config['url'], model_path)
 
         self.system_message = system_message
