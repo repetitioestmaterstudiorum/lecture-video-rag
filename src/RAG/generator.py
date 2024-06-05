@@ -30,7 +30,6 @@ class Generator:
         context_detail_top_k: int | None = None,
         debug: bool = False
     ):
-        debug and print(f"generate() arguments: {locals()}")
         if not context_detail_top_k:
             context_detail_top_k = n_docs
             debug and print(
@@ -78,7 +77,7 @@ class Generator:
 
         if context_details and documents:
             context_info_text = self._get_context_info_text(
-                metadatas, distances, context_detail_top_k)
+                metadatas, distances, context_detail_top_k, debug)
 
             return f"{rag_answer}\n\nContext information (RAG):\n{context_info_text.strip()}"
         else:
@@ -106,7 +105,8 @@ class Generator:
         self,
         metadatas: List[dict],
         distances: List[float],
-        context_detail_top_k: int | None = None
+        context_detail_top_k: int | None = None,
+        debug: bool = False,
     ):
         context_info = []
         for meta, dist in zip(metadatas, distances):
@@ -119,8 +119,8 @@ class Generator:
                     '/').index('videos') if 'videos' in unique_video_name.split('/') else None
 
                 if videos_folder_path_index == None:
-                    print(
-                        f"  --Expected unique_video_name to contain 'videos' in the path. Found path: {unique_video_name}--  ")
+                    debug and print(
+                        f"'videos' not found in unique_video_name. unique_video_name: {unique_video_name}. Assuming that the first folder is the course and the second folder is the video.")
                     videos_folder_path_index = -1
 
                 course = unique_video_name.split(

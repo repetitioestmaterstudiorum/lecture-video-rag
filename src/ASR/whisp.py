@@ -3,9 +3,10 @@ from whisper import load_audio, load_model
 # ---
 
 
-def video_to_text(video_file_path: str, model_name="tiny.en", device='cpu'):
+def video_to_text(video_file_path: str, model_name="tiny.en", device='cpu', debug=False):
     if device == 'mps':
-        print(f"The device 'mps' is not supported in whisper (March 2024). Switching to 'cpu'. ")
+        debug and print(
+            f"The device 'mps' is not supported in whisper (March 2024). Switching to 'cpu'. ")
         device = 'cpu'
 
     model = load_model(model_name, device=device)

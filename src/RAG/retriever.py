@@ -57,7 +57,6 @@ class Retriever:
         if not found.get('documents')[0]:
             return None, None, None
 
-        debug and print(f"{len(found['documents'][0])}", end='')
         metadatas = []
         documents = []
         distances = []
@@ -66,7 +65,6 @@ class Retriever:
                 metadatas.append(meta)
                 documents.append(doc)
                 distances.append(dist)
-        debug and print(f'F{len(documents)}', end='')
 
         if not documents:
             dist_round = ', '.join([str(round(dist, 2))
@@ -76,7 +74,6 @@ class Retriever:
             return None, None, None
 
         if reranking:
-            debug and print(f'-R', end='')
             sentence_pairs = [[question, doc] for doc in documents]
 
             scores = self.reranker.predict(sentences=sentence_pairs)
@@ -88,9 +85,6 @@ class Retriever:
             documents = [documents[idx] for idx in top_k_indices]
             metadatas = [metadatas[idx] for idx in top_k_indices]
             distances = [distances[idx] for idx in top_k_indices]
-            debug and print(f'/R', end='')
-
-        debug and print('')
 
         if context_preparation_scheme == 'add_text_descriptions' and ('asr' in modalities or 'ocr' in modalities):
             documents = [f"{meta.get('source').upper()} text: {doc}"
@@ -109,7 +103,8 @@ class Retriever:
             answers = self.llm.generate(prompt, max_tokens, temperature)
             try:
                 relevant_indexes = json.loads(answers)
-                debug and print(f"Relevant indexes: {relevant_indexes}")
+                debug and print(
+                    f"N documents before filtering: {len(documents)}, after filtering: {len(relevant_indexes)}.")
                 documents = [documents[idx] for idx in relevant_indexes]
                 metadatas = [metadatas[idx] for idx in relevant_indexes]
                 distances = [distances[idx] for idx in relevant_indexes]
@@ -150,7 +145,7 @@ class Retriever:
 
         return metadatas, distances, documents
 
-    def _calculate_token_count(text):
+    def _calculate_token_count(self, text):
         # Assuming an average of 1.3 tokens per word (https://www.anyscale.com/blog/num-every-llm-developer-should-know)
         words = text.split()
         return int(len(words) * 1.3)

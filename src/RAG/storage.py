@@ -29,6 +29,7 @@ def cache_method(method):
     def wrapper(self, *args, **kwargs):
         cache_key = self._generate_cache_key(method.__name__, *args, **kwargs)
         db_path = os.path.join(self.cache_dir, 'asr-ocr-cache.db')
+        debug = kwargs.get('debug', False)
 
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
@@ -37,10 +38,11 @@ def cache_method(method):
             result = cursor.fetchone()
 
             if result:
-                print(f"Cached hit for {method.__name__}!")
+                debug and print(f"Cached hit for {method.__name__}!")
                 return json.loads(result[0])
             else:
-                print(f"No cache hit for {method.__name__}. Running...")
+                debug and print(
+                    f"No cache hit for {method.__name__}. Running...")
                 result = method(self, *args, **kwargs)
                 cursor.execute('INSERT INTO cache (key, result) VALUES (?, ?)',
                                (cache_key, json.dumps(result)))
@@ -147,7 +149,9 @@ class Storage:
         else:
             asr_out = self._asr_video_to_text(video_path, debug)
             ocr_out = self._ocr_video_to_text(video_path, debug)
-        print(f"\nASR segments: {len(asr_out)}, OCR segments: {len(ocr_out)}")
+
+        debug and print(
+            f"\nASR segments: {len(asr_out)}, OCR segments: {len(ocr_out)}")
 
         # Postprocessing
         if self.asr_postprocessing_fn:
@@ -241,7 +245,8 @@ class Storage:
         asr_output = whisp.video_to_text(
             video_file_path=video_path,
             model_name=self.asr_whisper_model_name,
-            device=self.device
+            device=self.device,
+            debug=debug,
         )
         debug and print(f"ASR done.")
         return asr_output['segments']
