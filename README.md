@@ -33,6 +33,17 @@ This is a proof of concept for a lecture video search and question answering sys
 - Watch CUDA GPU processes: `watch -n 1 nvidia-smi`
 - Watch CPU processes: `htop`
 
+## Known Issues
+
+1. hugingface/tokenizers tokenization warning
+
+Sometimes, the following warning occurs:
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either: - Avoid using `tokenizers` before the fork if possible - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+To avoid this, you can set the environment variable `TOKENIZERS_PARALLELISM=false` to avoid this warning.
+
 ## TODO
 
 - tests
