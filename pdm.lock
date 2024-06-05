@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:c431b03dd44d077ffc5b6c81a0b57d51fc242999ebc97abc2a2ddabe5d1b9f2e"
+content_hash = "sha256:68276683117a36f63a26786738973591a39c187656573641be7fe12140059ab2"
 
 [[package]]
 name = "annotated-types"
@@ -2593,7 +2593,7 @@ name = "tqdm"
 version = "4.66.4"
 requires_python = ">=3.7"
 summary = "Fast, Extensible Progress Meter"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "colorama; platform_system == \"Windows\"",
 ]

@@ -134,3 +134,17 @@ class RAGSystem:
             context_detail_top_k=context_detail_top_k,
             debug=debug
         )
+
+    def preprocess_video(
+        self,
+        unique_video_name: str,
+        video_path: str,
+        parallel: bool = True,
+        debug: bool = False,
+    ):
+        return self.storage.add_video(
+            unique_video_name=unique_video_name,
+            video_path=video_path,
+            parallel=parallel,
+            debug=debug
+        )
