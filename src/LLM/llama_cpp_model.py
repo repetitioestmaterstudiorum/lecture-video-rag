@@ -131,7 +131,7 @@ class LlamaCppLlm:
         self.llm = Llama(
             model_path=model_path,
             n_ctx=32768,  # The max context/sequence length to use
-            n_threads=8,  # Max CPU thready to use
+            n_threads=8,  # Max CPU threads to use
             n_gpu_layers=-1,  # Max GPU layers
             verbose=False
         )
@@ -144,25 +144,48 @@ class LlamaCppLlm:
         prompt: str,
         max_tokens: int = 512,
         temperature: float = 0.7,
-        stop_token=["</s>"],
+        stream: bool = False,
     ):
         if not prompt:
-            raise ValueError(f"Prompt required for text generation!")
+            raise ValueError("Prompt required for text generation!")
 
         prompt = self.model_config['prompt_template'](
             prompt, self.system_message)
 
-        try:
-            # Check {...}/llama_cpp/llama.py for parameters
-            output = self.llm(
-                prompt=prompt,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                stop=stop_token,
-                echo=False,
-            )
-            relevant_output = output['choices'][0]['text'].strip()
-        except Exception as e:
-            print(f"{self.model_name} exception:\n{e}")
-            relevant_output = None
+        if stream:
+            return self._stream_generate(prompt, max_tokens, temperature)
+        else:
+            return self._generate(prompt, max_tokens, temperature)
+
+    def _generate(
+        self,
+        prompt: str,
+        max_tokens: int,
+        temperature: float,
+    ):
+        output = self.llm(
+            prompt=prompt,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            stop=self.llm._token_eos,  # Probably not needed
+            stream=False
+        )
+        relevant_output = output['choices'][0]['text'].strip()
         return relevant_output
+
+    def _stream_generate(
+        self,
+        prompt: str,
+        max_tokens: int,
+        temperature: float,
+    ):
+        output = self.llm(
+            prompt=prompt,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            stop=self.llm._token_eos,  # Probably not needed
+            stream=True
+        )
+        for response in output:
+            relevant_output = response['choices'][0]['text']
+            yield relevant_output
