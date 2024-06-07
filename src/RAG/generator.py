@@ -28,6 +28,7 @@ class Generator:
         gen_temperature: float = 0.7,
         context_details: bool = True,
         context_detail_top_k: int | None = None,
+        stream: bool = False,
         debug: bool = False
     ):
         if not context_detail_top_k:
@@ -52,8 +53,6 @@ class Generator:
             reranker_n_docs=reranker_n_docs,
             debug=debug
         )
-        documents and context_details and print(
-            f"\nRetrieved {len(documents)} documents.")
 
         if debug and documents:
             for meta, dist, doc in zip(metadatas, distances, documents):
@@ -66,40 +65,55 @@ class Generator:
             else:
                 return "No relevant documents found."
 
-        rag_answer = self._prompt_llm(
-            context=documents,
-            question=question,
-            generator_preprompt=generator_preprompt,
-            max_tokens=gen_max_tokens,
-            temperature=gen_temperature,
-            debug=debug
-        )
+        context = '\n\n'.join(documents or [])
+        prompt_with_context = f"{generator_preprompt}\n\n*Context:*\n{context}\n\n*Question:*\n{question}" if documents else question
+        debug and print(f"Question with context: {prompt_with_context}")
 
-        if context_details and documents:
-            context_info_text = self._get_context_info_text(
-                metadatas, distances, context_detail_top_k, debug)
+        context_info_text = self._get_context_info_text(
+            metadatas, distances, context_detail_top_k, debug).strip() if context_details and context else None
 
-            return f"{rag_answer}\n\nContext information (RAG):\n{context_info_text.strip()}"
+        len_docs = len(documents) if documents else 0
+
+        if stream:
+            return self._prompt_llm_stream(
+                len_docs, prompt_with_context, context_info_text, gen_max_tokens, gen_temperature)
         else:
-            return rag_answer
+            return self._prompt_llm(
+                len_docs, prompt_with_context, context_info_text, gen_max_tokens, gen_temperature)
 
     def _prompt_llm(
         self,
-        context: List[str] | None,
-        question: str,
-        generator_preprompt: str = '',
+        n_retrieved: int,
+        prompt_with_context: str,
+        context_info_text: str | None,
         max_tokens: int = 512,
         temperature: float = 0.7,
-        debug: bool = False
     ):
-        context = '\n'.join(context or [])
-        prompt_with_context = f"{generator_preprompt}\n\n*Context:*\n{context}\n\n*Question:*\n{question}" if context else question
+        llm_answer = self.llm.generate(
+            prompt_with_context, max_tokens, temperature, stream=False)
 
-        debug and print(f"Question with context: {prompt_with_context}")
-        answer = self.llm.generate(
-            prompt_with_context, max_tokens, temperature)
+        if context_info_text:
+            llm_answer += f"\n\nContext information (RAG):\n{context_info_text}"
 
-        return answer
+        return f"Retrieved {n_retrieved} documents.\n\n{llm_answer}"
+
+    def _prompt_llm_stream(
+        self,
+        n_retrieved: int,
+        prompt_with_context: str,
+        context_info_text: str | None,
+        max_tokens: int = 512,
+        temperature: float = 0.7,
+    ):
+        yield f"Retrieved {n_retrieved} documents.\n\n"
+
+        for token in self.llm.generate(
+            prompt_with_context, max_tokens, temperature, stream=True
+        ):
+            yield token
+
+        if context_info_text:
+            yield f"\n\nContext information (RAG):\n{context_info_text}"
 
     def _get_context_info_text(
         self,

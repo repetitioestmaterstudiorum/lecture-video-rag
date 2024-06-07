@@ -153,7 +153,7 @@ class LlamaCppLlm:
             prompt, self.system_message)
 
         if stream:
-            return self._stream_generate(prompt, max_tokens, temperature)
+            return self._generate_stream(prompt, max_tokens, temperature)
         else:
             return self._generate(prompt, max_tokens, temperature)
 
@@ -173,7 +173,7 @@ class LlamaCppLlm:
         relevant_output = output['choices'][0]['text'].strip()
         return relevant_output
 
-    def _stream_generate(
+    def _generate_stream(
         self,
         prompt: str,
         max_tokens: int,
@@ -186,6 +186,6 @@ class LlamaCppLlm:
             stop=self.llm._token_eos,  # Probably not needed
             stream=True
         )
-        for response in output:
+        for i, response in enumerate(output):
             relevant_output = response['choices'][0]['text']
-            yield relevant_output
+            yield relevant_output.strip() if i == 0 else relevant_output

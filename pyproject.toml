@@ -19,6 +19,7 @@ dependencies = [
     "openai-whisper>=20231117",
     "llama-cpp-python>=0.2.77",
     "einops>=0.8.0",
+    "gradio>=4.36.0",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"

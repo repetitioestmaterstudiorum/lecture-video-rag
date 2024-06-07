@@ -62,8 +62,8 @@ second_best = {
     "generator_temperature": 0.0,
 }
 
-merge = {
-    "storage_llm_model_name": "Llama 3 8B Instruct Nous Q5_K_M",
+light = {
+    "storage_llm_model_name": "",
     "storage_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "storage_embedding_model": "nomic-ai/nomic-embed-text-v1",
     "storage_collection_space": "cosine",
@@ -79,14 +79,14 @@ merge = {
     "storage_ocr_postprocessing_fn": "",
     "storage_ocr_llm_preprompt": "",
     "storage_average_asr_ocr": False,
-    "retriever_llm_model_name": "Llama 3 8B Instruct Nous Q5_K_M",
+    "retriever_llm_model_name": "",
     "retriever_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
-    "retriever_reranker_model_name": "mixedbread-ai/mxbai-rerank-large-v1",
+    "retriever_reranker_model_name": "mixedbread-ai/mxbai-rerank-base-v1",
     "retriever_reranker_n_docs": 30,
     "retriever_n_docs": 5,
     "retriever_modalities_overwrite": "",
     "retriever_distance_threshold": 0.8,
-    "retriever_context_preparation_scheme": "llm_filter_relevant",
+    "retriever_context_preparation_scheme": "",
     "generator_llm_model_name": "Mistral 7B Instruct v0.2 Q5_K_M",
     "generator_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "generator_preprompt": "Given the context, answer the question. You MUST use the information provided in the context.",

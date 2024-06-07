@@ -26,7 +26,7 @@ class RAGSystem:
             model_name=hypers['storage_llm_model_name'],
             system_message=hypers['storage_llm_system_message'],
             random_seed=RANDOM_SEED,
-        )
+        ) if hypers['storage_llm_model_name'] else None
         self.storage = Storage(
             db_path=os.path.join(data_dir, 'storage_db'),
             embedding_model=hypers['storage_embedding_model'],
@@ -54,7 +54,7 @@ class RAGSystem:
             model_name=hypers['retriever_llm_model_name'],
             system_message=hypers['retriever_llm_system_message'],
             random_seed=RANDOM_SEED,
-        )
+        ) if hypers['retriever_llm_model_name'] else None
 
         reranker = CrossEncoder(hypers['retriever_reranker_model_name']
                                 ) if hypers['retriever_reranker_model_name'] else None
@@ -105,6 +105,7 @@ class RAGSystem:
         context_details: bool = True,
         force_answer: bool = False,
         context_detail_top_k: int | None = None,
+        stream: bool = False,
         debug: bool = False,
 
         # Hyperparameters
@@ -132,6 +133,7 @@ class RAGSystem:
             gen_temperature=gen_temperature if gen_temperature is not None else self.default_gen_temperature,
             context_details=context_details,
             context_detail_top_k=context_detail_top_k,
+            stream=stream,
             debug=debug
         )
 
