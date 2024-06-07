@@ -13,9 +13,9 @@ This is a proof of concept for a lecture video search and question answering sys
 
 1. Ensure you have the package manager pdm installed: https://pdm-project.org/en/latest/ (on MacOS: `brew install pdm`)
 2. Install the necessary system dependencies (see below)
-3. Install Python 3.11 (with pdm; `pdm python install 3.11`) if you don't have it installed already
-4. Run `pdm install -d` to install all dependencies
-5. Follow Llama-CPP-Python instructions (see below)
+3. Ensure Python 3.11 is installed
+4. Follow Llama-CPP-Python instructions (see below)
+5. Run `pdm install -d` to install all dependencies
 6. Rename the `example.env` file in the `dev` folder to `.env` and fill in the necessary environment variables
 7. Run the code in `dev/example.ipynb` to see how to use the RAG logic
 
@@ -26,8 +26,8 @@ This is a proof of concept for a lecture video search and question answering sys
 
 ### Llama-CPP-Python
 
-- In case your system has a CUDA compatible GPU, and nvidia-cufft-cu12 can't be installed, execute the following command after `pdm install`: `CUDACXX=/usr/local/cuda-12/bin/nvcc CMAKE_ARGS="-DLLAMA_CUBLAS=on -DCMAKE_CUDA_ARCHITECTURES=all-major" FORCE_CMAKE=1 pdm install` (https://medium.com/@ryan.stewart113/a-simple-guide-to-enabling-cuda-gpu-support-for-llama-cpp-python-on-your-os-or-in-containers-8b5ec1f912a4)
-- In case you have a MacOS M-family GPU (supporting MPS): `CMAKE_ARGS="-DLLAMA_METAL=on" pdm install`
+- In case your system has a CUDA compatible GPU: `CUDACXX=/usr/local/cuda-12/bin/nvcc CMAKE_ARGS="-DLLAMA_CUBLAS=on -DCMAKE_CUDA_ARCHITECTURES=all-major" FORCE_CMAKE=1` before `pdm install` (https://medium.com/@ryan.stewart113/a-simple-guide-to-enabling-cuda-gpu-support-for-llama-cpp-python-on-your-os-or-in-containers-8b5ec1f912a4)
+- In case you have a macOS M-family GPU (supporting MPS): `CMAKE_ARGS="-DLLAMA_METAL=on"` before `pdm install`
 
 ### Useful Commands
 
