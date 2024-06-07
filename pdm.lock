@@ -5,14 +5,14 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:0d7e291fda44589eb8792724a0f4a84d273d4fd0ff02e7fd59adc8aa17cf25bd"
+content_hash = "sha256:67a70899a0d1e83f5859339b56f01457cb466f7d71dcccac04015128f155ff1d"
 
 [[package]]
 name = "aiofiles"
 version = "23.2.1"
 requires_python = ">=3.7"
 summary = "File support for asyncio."
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "aiofiles-23.2.1-py3-none-any.whl", hash = "sha256:19297512c647d4b27a2cf7c34caa7e405c0d60b5560618a29a9fe027b18b0107"},
     {file = "aiofiles-23.2.1.tar.gz", hash = "sha256:84ec2218d8419404abcb9f0c02df3f34c6e0a68ed41072acfb1cef5cbc29051a"},
@@ -23,7 +23,7 @@ name = "altair"
 version = "5.3.0"
 requires_python = ">=3.8"
 summary = "Vega-Altair: A declarative statistical visualization library for Python."
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "jinja2",
     "jsonschema>=3.0",
@@ -42,7 +42,7 @@ name = "annotated-types"
 version = "0.7.0"
 requires_python = ">=3.8"
 summary = "Reusable constraint types to use with typing.Annotated"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "annotated_types-0.7.0-py3-none-any.whl", hash = "sha256:1f02e8b43a8fbbc3f3e0d4f0f4bfc8131bcb4eebe8849b8e5c773f3a1c582a53"},
     {file = "annotated_types-0.7.0.tar.gz", hash = "sha256:aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89"},
@@ -53,7 +53,7 @@ name = "anyio"
 version = "4.4.0"
 requires_python = ">=3.8"
 summary = "High level compatibility layer for multiple asynchronous event loop implementations"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "idna>=2.8",
     "sniffio>=1.1",
@@ -104,7 +104,7 @@ name = "attrs"
 version = "23.2.0"
 requires_python = ">=3.7"
 summary = "Classes Without Boilerplate"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "attrs-23.2.0-py3-none-any.whl", hash = "sha256:99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1"},
     {file = "attrs-23.2.0.tar.gz", hash = "sha256:935dc3b529c262f6cf76e50877d35a4bd3c1de194fd41f47a2b7ae8f19971f30"},
@@ -189,7 +189,7 @@ name = "certifi"
 version = "2024.6.2"
 requires_python = ">=3.6"
 summary = "Python package for providing Mozilla's CA Bundle."
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "certifi-2024.6.2-py3-none-any.whl", hash = "sha256:ddc6c8ce995e6987e7faf5e3f1b02b302836a0e5d98ece18392cb1a36c72ad56"},
     {file = "certifi-2024.6.2.tar.gz", hash = "sha256:3cd43f1c6fa7dedc5899d69d3ad0398fd018ad1a17fba83ddaf78aa46c747516"},
@@ -225,7 +225,7 @@ name = "charset-normalizer"
 version = "3.3.2"
 requires_python = ">=3.7.0"
 summary = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "charset-normalizer-3.3.2.tar.gz", hash = "sha256:f30c3cb33b24454a82faecaf01b19c18562b1e89558fb6c56de4d9118a032fd5"},
     {file = "charset_normalizer-3.3.2-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:802fe99cca7457642125a8a88a084cef28ff0cf9407060f7b93dca5aa25480db"},
@@ -308,7 +308,7 @@ name = "click"
 version = "8.1.7"
 requires_python = ">=3.7"
 summary = "Composable command line interface toolkit"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "colorama; platform_system == \"Windows\"",
 ]
@@ -362,7 +362,7 @@ name = "contourpy"
 version = "1.2.1"
 requires_python = ">=3.9"
 summary = "Python library for calculating contours of 2D quadrilateral grids"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "numpy>=1.20",
 ]
@@ -388,7 +388,7 @@ name = "cycler"
 version = "0.12.1"
 requires_python = ">=3.8"
 summary = "Composable style cycles"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "cycler-0.12.1-py3-none-any.whl", hash = "sha256:85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30"},
     {file = "cycler-0.12.1.tar.gz", hash = "sha256:88bb128f02ba341da8ef447245a9e138fae777f6a23943da4540077d3601eb1c"},
@@ -450,7 +450,7 @@ name = "dnspython"
 version = "2.6.1"
 requires_python = ">=3.8"
 summary = "DNS toolkit"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "dnspython-2.6.1-py3-none-any.whl", hash = "sha256:5ef3b9680161f6fa89daf8ad451b5f1a33b18ae8a1c6778cdf4b43f08c0a6e50"},
     {file = "dnspython-2.6.1.tar.gz", hash = "sha256:e8f0f9c23a7b7cb99ded64e6c3a6f3e701d78f50c55e002b839dea7225cff7cc"},
@@ -495,7 +495,7 @@ name = "email-validator"
 version = "2.1.1"
 requires_python = ">=3.8"
 summary = "A robust email address syntax and deliverability validation library."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "dnspython>=2.0.0",
     "idna>=2.0.0",
@@ -521,7 +521,7 @@ name = "fastapi"
 version = "0.111.0"
 requires_python = ">=3.8"
 summary = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "email-validator>=2.0.0",
     "fastapi-cli>=0.0.2",
@@ -545,7 +545,7 @@ name = "fastapi-cli"
 version = "0.0.4"
 requires_python = ">=3.8"
 summary = "Run and manage FastAPI apps from the command line with FastAPI CLI. 🚀"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "typer>=0.12.3",
 ]
@@ -558,7 +558,7 @@ files = [
 name = "ffmpy"
 version = "0.3.2"
 summary = "A simple Python wrapper for ffmpeg"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "ffmpy-0.3.2.tar.gz", hash = "sha256:475ebfff1044661b8d969349dbcd2db9bf56d3ee78c0627e324769b49a27a78f"},
 ]
@@ -568,7 +568,7 @@ name = "filelock"
 version = "3.14.0"
 requires_python = ">=3.8"
 summary = "A platform independent file lock."
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "filelock-3.14.0-py3-none-any.whl", hash = "sha256:43339835842f110ca7ae60f1e1c160714c5a6afd15a2873419ab185334975c0f"},
     {file = "filelock-3.14.0.tar.gz", hash = "sha256:6ea72da3be9b8c82afd3edcf99f2fffbb5076335a5ae4d03248bb5b6c3eae78a"},
@@ -589,7 +589,7 @@ name = "fonttools"
 version = "4.53.0"
 requires_python = ">=3.8"
 summary = "Tools to manipulate font files"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "fonttools-4.53.0-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:a209d2e624ba492df4f3bfad5996d1f76f03069c6133c60cd04f9a9e715595ec"},
     {file = "fonttools-4.53.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:4f520d9ac5b938e6494f58a25c77564beca7d0199ecf726e1bd3d56872c59749"},
@@ -608,7 +608,7 @@ name = "fsspec"
 version = "2024.6.0"
 requires_python = ">=3.8"
 summary = "File-system specification"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "fsspec-2024.6.0-py3-none-any.whl", hash = "sha256:58d7122eb8a1a46f7f13453187bfea4972d66bf01618d37366521b1998034cee"},
     {file = "fsspec-2024.6.0.tar.gz", hash = "sha256:f579960a56e6d8038a9efc8f9c77279ec12e6299aa86b0769a7e9c46b94527c2"},
@@ -649,7 +649,7 @@ name = "gradio"
 version = "4.36.0"
 requires_python = ">=3.8"
 summary = "Python library for easily interacting with trained machine learning models"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "aiofiles<24.0,>=22.0",
     "altair<6.0,>=4.2.0",
@@ -689,7 +689,7 @@ name = "gradio-client"
 version = "1.0.1"
 requires_python = ">=3.8"
 summary = "Python library for easily interacting with trained machine learning models"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "fsspec",
     "httpx>=0.24.1",
@@ -727,7 +727,7 @@ name = "h11"
 version = "0.14.0"
 requires_python = ">=3.7"
 summary = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "h11-0.14.0-py3-none-any.whl", hash = "sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761"},
     {file = "h11-0.14.0.tar.gz", hash = "sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d"},
@@ -738,7 +738,7 @@ name = "httpcore"
 version = "1.0.5"
 requires_python = ">=3.8"
 summary = "A minimal low-level HTTP client."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "certifi",
     "h11<0.15,>=0.13",
@@ -753,7 +753,7 @@ name = "httptools"
 version = "0.6.1"
 requires_python = ">=3.8.0"
 summary = "A collection of framework independent HTTP protocol utils."
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "httptools-0.6.1-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:7a7ea483c1a4485c71cb5f38be9db078f8b0e8b4c4dc0210f531cdd2ddac1ef1"},
     {file = "httptools-0.6.1-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:85ed077c995e942b6f1b07583e4eb0a8d324d418954fc6af913d36db7c05a5a0"},
@@ -770,7 +770,7 @@ name = "httpx"
 version = "0.27.0"
 requires_python = ">=3.8"
 summary = "The next generation HTTP client."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "anyio",
     "certifi",
@@ -788,7 +788,7 @@ name = "huggingface-hub"
 version = "0.23.2"
 requires_python = ">=3.8.0"
 summary = "Client library to download and publish models, datasets and other repos on the huggingface.co hub"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "filelock",
     "fsspec>=2023.5.0",
@@ -822,7 +822,7 @@ name = "idna"
 version = "3.7"
 requires_python = ">=3.5"
 summary = "Internationalized Domain Names in Applications (IDNA)"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "idna-3.7-py3-none-any.whl", hash = "sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0"},
     {file = "idna-3.7.tar.gz", hash = "sha256:028ff3aadf0609c1fd278d8ea3089299412a7a8b9bd005dd08b9f8285bcb5cfc"},
@@ -862,7 +862,7 @@ name = "importlib-resources"
 version = "6.4.0"
 requires_python = ">=3.8"
 summary = "Read resources from Python packages"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "importlib_resources-6.4.0-py3-none-any.whl", hash = "sha256:50d10f043df931902d4194ea07ec57960f66a80449ff867bfe782b4c486ba78c"},
     {file = "importlib_resources-6.4.0.tar.gz", hash = "sha256:cdb2b453b8046ca4e3798eb1d84f3cce1446a0e8e7b5ef4efb600f19fc398145"},
@@ -968,7 +968,7 @@ name = "jinja2"
 version = "3.1.4"
 requires_python = ">=3.7"
 summary = "A very fast and expressive template engine."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "MarkupSafe>=2.0",
 ]
@@ -993,7 +993,7 @@ name = "jsonschema"
 version = "4.22.0"
 requires_python = ">=3.8"
 summary = "An implementation of JSON Schema validation for Python"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "attrs>=22.2.0",
     "jsonschema-specifications>=2023.03.6",
@@ -1010,7 +1010,7 @@ name = "jsonschema-specifications"
 version = "2023.12.1"
 requires_python = ">=3.8"
 summary = "The JSON Schema meta-schemas and vocabularies, exposed as a Registry"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "referencing>=0.31.0",
 ]
@@ -1069,7 +1069,7 @@ name = "kiwisolver"
 version = "1.4.5"
 requires_python = ">=3.7"
 summary = "A fast implementation of the Cassowary constraint solver"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "kiwisolver-1.4.5-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:11863aa14a51fd6ec28688d76f1735f8f69ab1fabf388851a595d0721af042f5"},
     {file = "kiwisolver-1.4.5-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:8ab3919a9997ab7ef2fbbed0cc99bb28d3c13e6d4b1ad36e97e482558a91be90"},
@@ -1177,7 +1177,7 @@ name = "markdown-it-py"
 version = "3.0.0"
 requires_python = ">=3.8"
 summary = "Python port of markdown-it. Markdown parsing, done right!"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "mdurl~=0.1",
 ]
@@ -1191,7 +1191,7 @@ name = "markupsafe"
 version = "2.1.5"
 requires_python = ">=3.7"
 summary = "Safely add untrusted strings to HTML/XML markup."
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "MarkupSafe-2.1.5-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:629ddd2ca402ae6dbedfceeba9c46d5f7b2a61d9749597d4307f943ef198fc1f"},
     {file = "MarkupSafe-2.1.5-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:5b7b716f97b52c5a14bffdf688f971b2d5ef4029127f1ad7a513973cfd818df2"},
@@ -1211,7 +1211,7 @@ name = "matplotlib"
 version = "3.9.0"
 requires_python = ">=3.9"
 summary = "Python plotting package"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "contourpy>=1.0.1",
     "cycler>=0.10",
@@ -1256,7 +1256,7 @@ name = "mdurl"
 version = "0.1.2"
 requires_python = ">=3.7"
 summary = "Markdown URL utilities"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
     {file = "mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
@@ -1405,7 +1405,7 @@ name = "numpy"
 version = "1.26.4"
 requires_python = ">=3.9"
 summary = "Fundamental package for array computing in Python"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "numpy-1.26.4-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:4c66707fabe114439db9068ee468c26bbdf909cac0fb58686a42a24de1760c71"},
     {file = "numpy-1.26.4-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:edd8b5fe47dab091176d21bb6de568acdd906d1887a4584a15a9a96a1dca06ef"},
@@ -1620,6 +1620,7 @@ dependencies = [
     "tiktoken",
     "torch",
     "tqdm",
+    "triton<3,>=2.0.0",
 ]
 files = [
     {file = "openai-whisper-20231117.tar.gz", hash = "sha256:7af424181436f1800cc0b7d75cf40ede34e9ddf1ba4983a910832fcf4aade4a4"},
@@ -1836,7 +1837,7 @@ name = "orjson"
 version = "3.10.3"
 requires_python = ">=3.8"
 summary = "Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "orjson-3.10.3-cp311-cp311-macosx_10_15_x86_64.macosx_11_0_arm64.macosx_10_15_universal2.whl", hash = "sha256:73100d9abbbe730331f2242c1fc0bcb46a3ea3b4ae3348847e5a141265479700"},
     {file = "orjson-3.10.3-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:544a12eee96e3ab828dbfcb4d5a0023aa971b27143a1d35dc214c176fdfb29b3"},
@@ -1877,7 +1878,7 @@ name = "pandas"
 version = "2.2.2"
 requires_python = ">=3.9"
 summary = "Powerful data structures for data analysis, time series, and statistics"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "numpy>=1.23.2; python_version == \"3.11\"",
     "python-dateutil>=2.8.2",
@@ -1925,7 +1926,7 @@ name = "pillow"
 version = "10.3.0"
 requires_python = ">=3.8"
 summary = "Python Imaging Library (Fork)"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "pillow-10.3.0-cp311-cp311-macosx_10_10_x86_64.whl", hash = "sha256:5f77cf66e96ae734717d341c145c5949c63180842a545c47a0ce7ae52ca83795"},
     {file = "pillow-10.3.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:e4b878386c4bf293578b48fc570b84ecfe477d3b77ba39a6e87150af77f40c57"},
@@ -2110,7 +2111,7 @@ name = "pydantic"
 version = "2.7.3"
 requires_python = ">=3.8"
 summary = "Data validation using Python type hints"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "annotated-types>=0.4.0",
     "pydantic-core==2.18.4",
@@ -2126,7 +2127,7 @@ name = "pydantic-core"
 version = "2.18.4"
 requires_python = ">=3.8"
 summary = "Core functionality for Pydantic validation and serialization"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "typing-extensions!=4.7.0,>=4.6.0",
 ]
@@ -2167,7 +2168,7 @@ files = [
 name = "pydub"
 version = "0.25.1"
 summary = "Manipulate audio with an simple and easy high level interface"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "pydub-0.25.1-py2.py3-none-any.whl", hash = "sha256:65617e33033874b59d87db603aa1ed450633288aefead953b30bded59cb599a6"},
     {file = "pydub-0.25.1.tar.gz", hash = "sha256:980a33ce9949cab2a569606b65674d748ecbca4f0796887fd6f46173a7b0d30f"},
@@ -2189,7 +2190,7 @@ name = "pyparsing"
 version = "3.1.2"
 requires_python = ">=3.6.8"
 summary = "pyparsing module - Classes and methods to define and execute parsing grammars"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "pyparsing-3.1.2-py3-none-any.whl", hash = "sha256:f9db75911801ed778fe61bb643079ff86601aca99fcae6345aa67292038fb742"},
     {file = "pyparsing-3.1.2.tar.gz", hash = "sha256:a1bac0ce561155ecc3ed78ca94d3c9378656ad4c94c1270de543f621420f94ad"},
@@ -2295,7 +2296,7 @@ name = "python-multipart"
 version = "0.0.9"
 requires_python = ">=3.8"
 summary = "A streaming multipart parser for Python"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "python_multipart-0.0.9-py3-none-any.whl", hash = "sha256:97ca7b8ea7b05f977dc3849c3ba99d51689822fab725c3703af7c866a0c2b215"},
     {file = "python_multipart-0.0.9.tar.gz", hash = "sha256:03f54688c663f1b7977105f021043b0793151e4cb1c1a9d4a11fc13d622c4026"},
@@ -2305,7 +2306,7 @@ files = [
 name = "pytz"
 version = "2024.1"
 summary = "World timezone definitions, modern and historical"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "pytz-2024.1-py2.py3-none-any.whl", hash = "sha256:328171f4e3623139da4983451950b28e95ac706e13f3f2630a879749e7a8b319"},
     {file = "pytz-2024.1.tar.gz", hash = "sha256:2a29735ea9c18baf14b448846bde5a48030ed267578472d8955cd0e7443a9812"},
@@ -2328,7 +2329,7 @@ name = "pyyaml"
 version = "6.0.1"
 requires_python = ">=3.6"
 summary = "YAML parser and emitter for Python"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "PyYAML-6.0.1-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:6965a7bc3cf88e5a1c3bd2e0b5c22f8d677dc88a455344035f03399034eb3007"},
     {file = "PyYAML-6.0.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:f003ed9ad21d6a4713f0a9b5a7a0a79e08dd0f221aff4525a2be4c346ee60aab"},
@@ -2392,7 +2393,7 @@ name = "referencing"
 version = "0.35.1"
 requires_python = ">=3.8"
 summary = "JSON Referencing + Python"
-groups = ["default"]
+groups = ["dev"]
 dependencies = [
     "attrs>=22.2.0",
     "rpds-py>=0.7.0",
@@ -2432,7 +2433,7 @@ name = "requests"
 version = "2.32.3"
 requires_python = ">=3.8"
 summary = "Python HTTP for Humans."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "certifi>=2017.4.17",
     "charset-normalizer<4,>=2",
@@ -2464,7 +2465,7 @@ name = "rich"
 version = "13.7.1"
 requires_python = ">=3.7.0"
 summary = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "markdown-it-py>=2.2.0",
     "pygments<3.0.0,>=2.13.0",
@@ -2479,7 +2480,7 @@ name = "rpds-py"
 version = "0.18.1"
 requires_python = ">=3.8"
 summary = "Python bindings to Rust's persistent data structures (rpds)"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "rpds_py-0.18.1-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:6b5ff7e1d63a8281654b5e2896d7f08799378e594f09cf3674e832ecaf396ce8"},
     {file = "rpds_py-0.18.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:8927638a4d4137a289e41d0fd631551e89fa346d6dbcfc31ad627557d03ceb6d"},
@@ -2549,7 +2550,7 @@ name = "ruff"
 version = "0.4.8"
 requires_python = ">=3.7"
 summary = "An extremely fast Python linter and code formatter, written in Rust."
-groups = ["default"]
+groups = ["dev"]
 marker = "sys_platform != \"emscripten\""
 files = [
     {file = "ruff-0.4.8-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:7663a6d78f6adb0eab270fa9cf1ff2d28618ca3a652b60f2a234d92b9ec89066"},
@@ -2690,7 +2691,7 @@ name = "semantic-version"
 version = "2.10.0"
 requires_python = ">=2.7"
 summary = "A library implementing the 'SemVer' scheme."
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "semantic_version-2.10.0-py2.py3-none-any.whl", hash = "sha256:de78a3b8e0feda74cabc54aab2da702113e33ac9d9eb9d2389bcf1f58b7d9177"},
     {file = "semantic_version-2.10.0.tar.gz", hash = "sha256:bdabb6d336998cbb378d4b9db3a4b56a1e3235701dc05ea2690d9a997ed5041c"},
@@ -2753,7 +2754,7 @@ name = "shellingham"
 version = "1.5.4"
 requires_python = ">=3.7"
 summary = "Tool to Detect Surrounding Shell"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "shellingham-1.5.4-py2.py3-none-any.whl", hash = "sha256:7ecfff8f2fd72616f7481040475a65b2bf8af90a56c89140852d1120324e8686"},
     {file = "shellingham-1.5.4.tar.gz", hash = "sha256:8dbca0739d487e5bd35ab3ca4b36e11c4078f3a234bfce294b0a0291363404de"},
@@ -2775,7 +2776,7 @@ name = "sniffio"
 version = "1.3.1"
 requires_python = ">=3.7"
 summary = "Sniff out which async library your code is running under"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "sniffio-1.3.1-py3-none-any.whl", hash = "sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2"},
     {file = "sniffio-1.3.1.tar.gz", hash = "sha256:f4324edc670a0f49750a81b895f35c3adb843cca46f0530f79fc1babb23789dc"},
@@ -2801,7 +2802,7 @@ name = "starlette"
 version = "0.37.2"
 requires_python = ">=3.8"
 summary = "The little ASGI library that shines."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "anyio<5,>=3.4.0",
 ]
@@ -2951,7 +2952,7 @@ name = "tomlkit"
 version = "0.12.0"
 requires_python = ">=3.7"
 summary = "Style preserving TOML library"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "tomlkit-0.12.0-py3-none-any.whl", hash = "sha256:926f1f37a1587c7a4f6c7484dae538f1345d96d793d9adab5d3675957b1d0766"},
     {file = "tomlkit-0.12.0.tar.gz", hash = "sha256:01f0477981119c7d8ee0f67ebe0297a7c95b14cf9f4b102b45486deb77018716"},
@@ -2962,7 +2963,7 @@ name = "toolz"
 version = "0.12.1"
 requires_python = ">=3.7"
 summary = "List processing tools and functional utilities"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "toolz-0.12.1-py3-none-any.whl", hash = "sha256:d22731364c07d72eea0a0ad45bafb2c2937ab6fd38a3507bf55eae8744aa7d85"},
     {file = "toolz-0.12.1.tar.gz", hash = "sha256:ecca342664893f177a13dac0e6b41cbd8ac25a358e5f215316d43e2100224f4d"},
@@ -3093,7 +3094,6 @@ name = "triton"
 version = "2.3.0"
 summary = "A language and compiler for custom Deep Learning operations"
 groups = ["default"]
-marker = "platform_system == \"Linux\" and platform_machine == \"x86_64\" and python_version < \"3.12\""
 dependencies = [
     "filelock",
 ]
@@ -3106,7 +3106,7 @@ name = "typer"
 version = "0.12.3"
 requires_python = ">=3.7"
 summary = "Typer, build great CLIs. Easy to code. Based on Python type hints."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "click>=8.0.0",
     "rich>=10.11.0",
@@ -3134,7 +3134,7 @@ name = "tzdata"
 version = "2024.1"
 requires_python = ">=2"
 summary = "Provider of IANA time zone data"
-groups = ["default"]
+groups = ["dev"]
 files = [
     {file = "tzdata-2024.1-py2.py3-none-any.whl", hash = "sha256:9068bc196136463f5245e51efda838afa15aaeca9903f49050dfa2679db4d252"},
     {file = "tzdata-2024.1.tar.gz", hash = "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd"},
@@ -3145,7 +3145,7 @@ name = "ujson"
 version = "5.10.0"
 requires_python = ">=3.8"
 summary = "Ultra fast JSON encoder and decoder for Python"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "ujson-5.10.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:a5b366812c90e69d0f379a53648be10a5db38f9d4ad212b60af00bd4048d0f00"},
     {file = "ujson-5.10.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:502bf475781e8167f0f9d0e41cd32879d120a524b22358e7f205294224c71126"},
@@ -3182,7 +3182,7 @@ name = "urllib3"
 version = "2.2.1"
 requires_python = ">=3.8"
 summary = "HTTP library with thread-safe connection pooling, file post, and more."
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "urllib3-2.2.1-py3-none-any.whl", hash = "sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d"},
     {file = "urllib3-2.2.1.tar.gz", hash = "sha256:d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"},
@@ -3193,7 +3193,7 @@ name = "uvicorn"
 version = "0.30.1"
 requires_python = ">=3.8"
 summary = "The lightning-fast ASGI server."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "click>=7.0",
     "h11>=0.8",
@@ -3209,7 +3209,7 @@ version = "0.30.1"
 extras = ["standard"]
 requires_python = ">=3.8"
 summary = "The lightning-fast ASGI server."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "colorama>=0.4; sys_platform == \"win32\"",
     "httptools>=0.5.0",
@@ -3230,7 +3230,7 @@ name = "uvloop"
 version = "0.19.0"
 requires_python = ">=3.8.0"
 summary = "Fast implementation of asyncio event loop on top of libuv"
-groups = ["default"]
+groups = ["default", "dev"]
 marker = "(sys_platform != \"cygwin\" and sys_platform != \"win32\") and platform_python_implementation != \"PyPy\""
 files = [
     {file = "uvloop-0.19.0-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:4ce6b0af8f2729a02a5d1575feacb2a94fc7b2e983868b009d51c9a9d2149bef"},
@@ -3247,7 +3247,7 @@ name = "watchfiles"
 version = "0.22.0"
 requires_python = ">=3.8"
 summary = "Simple, modern and high performance file watching and code reload in python."
-groups = ["default"]
+groups = ["default", "dev"]
 dependencies = [
     "anyio>=3.0.0",
 ]
@@ -3306,7 +3306,7 @@ name = "websockets"
 version = "11.0.3"
 requires_python = ">=3.7"
 summary = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
-groups = ["default"]
+groups = ["default", "dev"]
 files = [
     {file = "websockets-11.0.3-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:e848f46a58b9fcf3d06061d17be388caf70ea5b8cc3466251963c8345e13f7eb"},
     {file = "websockets-11.0.3-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:aa5003845cdd21ac0dc6c9bf661c5beddd01116f6eb9eb3c8e272353d45b3288"},
