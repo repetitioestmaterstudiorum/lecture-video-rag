@@ -29,7 +29,7 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [tool.pdm]
-distribution = true
+distribution = false
 package-dir = "src"
 
 [tool.pdm.dev-dependencies]
