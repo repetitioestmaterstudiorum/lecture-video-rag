@@ -95,7 +95,7 @@ class Generator:
         if context_info_text:
             llm_answer += f"\n\nContext information (RAG):\n{context_info_text}"
 
-        return f"Retrieved {n_retrieved} documents.\n\n{llm_answer}"
+        return f"Retrieved {n_retrieved} context elements.\n\n{llm_answer}"
 
     def _prompt_llm_stream(
         self,
@@ -105,7 +105,7 @@ class Generator:
         max_tokens: int = 512,
         temperature: float = 0.7,
     ):
-        yield f"Retrieved {n_retrieved} documents.\n\n"
+        yield f"Retrieved {n_retrieved} context elements.\n\n"
 
         for token in self.llm.generate(
             prompt_with_context, max_tokens, temperature, stream=True
