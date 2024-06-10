@@ -34,6 +34,6 @@ This is a proof of concept for a lecture video search and question answering sys
 - Watch CUDA GPU processes: `watch -n 1 nvidia-smi`
 - Watch CPU processes: `htop`
 
-## TODO
+## Gradio Screenshot
 
-- tests
+![Gradio App Screenshot](assets/gradio-app.png)
