@@ -4,7 +4,6 @@ import sqlite3
 import json
 import os
 import numpy as np
-from OCR import easyocr, tesseract
 from OCR.utils import combine_sequences
 from ASR import whisp
 from ASR.utils import get_sentences_from_whisper_result
@@ -261,8 +260,10 @@ class Storage:
             'debug': debug
         }
         if self.ocr_library == 'easyocr':
+            from OCR import easyocr
             ocr_output = easyocr.video_to_text(**ocr_args)
         elif self.ocr_library == 'tesseract':
+            from OCR import tesseract
             ocr_output = tesseract.video_to_text(**ocr_args)
         else:
             raise ValueError(

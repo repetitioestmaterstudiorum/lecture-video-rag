@@ -12,14 +12,14 @@ This is a proof of concept for a lecture video search and question answering sys
 ## Development Setup
 
 1. Ensure you have the package manager pdm installed: https://pdm-project.org/en/latest/ (on MacOS: `brew install pdm`)
-2. Install the necessary system dependencies (see below)
-3. Ensure Python 3.11 is installed
+2. If you want to use tesseract instead of easyocr (default) as OCR library, nstall the necessary tesseract system dependencies (see below)
+3. Ensure Python 3.11 is installed (with pdm: `pdm python install 3.11`)
 4. Follow Llama-CPP-Python instructions (see below)
 5. Run `pdm install -d` to install all dependencies
 6. Rename the `example.env` file in the `dev` folder to `.env` and fill in the necessary environment variables
-7. Run the code in `dev/example.ipynb` to see how to use the RAG logic
+7. Run the code in `dev/rag_example.ipynb` to see how to use the RAG logic
 
-### System Dependencies
+### Tesseract System Dependencies
 
 - Tesseract: https://github.com/tesseract-ocr/tesseract?tab=readme-ov-file#installing-tesseract
 - ffmpeg: https://ffmpeg.org/download.html
