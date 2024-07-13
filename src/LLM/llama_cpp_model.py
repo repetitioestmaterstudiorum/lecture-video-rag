@@ -55,6 +55,10 @@ MODEL_CONFIG = {
         'url': 'https://huggingface.co/TheBloke/phi-2-dpo-GGUF/resolve/main/phi-2-dpo.Q6_K.gguf',
         'prompt_template': phi_2_dpo_prompt_template
     },
+    'Phi-3 mini 4k instruct Q4': {
+        'url': 'https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/Phi-3-mini-4k-instruct-q4.gguf',
+        'prompt_template': phi_3_prompt_template
+    },
     'Phi-3 mini 4k instruct FP16': {
         'url': 'https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/Phi-3-mini-4k-instruct-fp16.gguf',
         'prompt_template': phi_3_prompt_template
