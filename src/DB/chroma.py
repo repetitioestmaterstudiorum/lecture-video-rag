@@ -27,12 +27,26 @@ class DB:
         collection_id = self.client.get_or_create_collection(
             name=name, metadata={'hnsw:space': space}).id
         collection = CustomCollection(
-            client=self.client, name=name, id=collection_id)
+            client=self.client, 
+            model={'id': collection_id, 'name': name}
+        )
 
         return collection
 
 
 class CustomCollection(chromadb.Collection):
+    def __init__(self, client, model):
+        super().__init__(client, model)
+        self._model = model
+    
+    @property
+    def id(self) -> str:
+        return self._model['id']
+
+    @property
+    def name(self) -> str:
+        return self._model['name']
+
     def insert(self, embeddings=None, metadatas=None, documents: List[str] | str = None):
         """
         Add data with IDs generated from SHA-256 hashes of the documents.
