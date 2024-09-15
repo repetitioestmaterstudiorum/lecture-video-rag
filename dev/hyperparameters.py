@@ -1,5 +1,5 @@
 best = {
-    "storage_llm_model_name": "Llama 3 8B Instruct Nous Q5_K_M",
+    "storage_llm_model_name": "",
     "storage_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "storage_embedding_model": "nomic-ai/nomic-embed-text-v1",
     "storage_collection_space": "cosine",
@@ -15,7 +15,7 @@ best = {
     "storage_ocr_postprocessing_fn": "",
     "storage_ocr_llm_preprompt": "",
     "storage_average_asr_ocr": False,
-    "retriever_llm_model_name": "Llama 3 8B Instruct Nous Q5_K_M",
+    "retriever_llm_model_name": "",
     "retriever_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "retriever_reranker_model_name": "mixedbread-ai/mxbai-rerank-large-v1",
     "retriever_reranker_n_docs": 40,
@@ -31,7 +31,7 @@ best = {
 }
 
 second_best = {
-    "storage_llm_model_name": "Llama 3 8B Instruct Nous Q5_K_M",
+    "storage_llm_model_name": "",
     "storage_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "storage_embedding_model": "nomic-ai/nomic-embed-text-v1",
     "storage_collection_space": "cosine",
@@ -47,7 +47,7 @@ second_best = {
     "storage_ocr_postprocessing_fn": "",
     "storage_ocr_llm_preprompt": "",
     "storage_average_asr_ocr": False,
-    "retriever_llm_model_name": "Llama 3 8B Instruct Nous Q5_K_M",
+    "retriever_llm_model_name": "",
     "retriever_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "retriever_reranker_model_name": "mixedbread-ai/mxbai-rerank-large-v1",
     "retriever_reranker_n_docs": 30,
@@ -73,7 +73,7 @@ light = {
     "storage_asr_postprocessing_fn": "",
     "storage_ocr_chunk_size": 2500,
     "storage_ocr_overlap": 750,
-    "storage_ocr_capture_every_n_s": 30,
+    "storage_ocr_capture_every_n_s": 45,
     "storage_ocr_frame_diff_threshold": 60,
     "storage_ocr_library": "easyocr",
     "storage_ocr_postprocessing_fn": "",
@@ -87,7 +87,7 @@ light = {
     "retriever_modalities_overwrite": "",
     "retriever_distance_threshold": 0.8,
     "retriever_context_preparation_scheme": "",
-    "generator_llm_model_name": "Mistral 7B Instruct v0.2 Q5_K_M",
+    "generator_llm_model_name": "Mistral 7B CapybaraHermes-2.5 Q4_K_M",
     "generator_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "generator_preprompt": "Given the context, answer the question. You MUST use the information provided in the context.",
     "generator_max_tokens": 2048,
