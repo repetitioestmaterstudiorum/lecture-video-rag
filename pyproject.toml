@@ -17,7 +17,7 @@ dependencies = [
     "pytesseract>=0.3.10",
     "PyPDF2>=3.0.1",
     "openai-whisper>=20231117",
-    "llama-cpp-python>=0.2.77",
+    "llama-cpp-python>=0.2.84",
     "einops>=0.8.0",
 ]
 requires-python = "==3.11.*"
