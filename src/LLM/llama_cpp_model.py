@@ -47,22 +47,6 @@ def llama_3_prompt_template(prompt: str, system_message: str | None):
 
 
 MODEL_CONFIG = {
-    'Phi-2 Q4_K_M': {
-        'url': 'https://huggingface.co/TheBloke/phi-2-GGUF/resolve/main/phi-2.Q4_K_M.gguf',
-        'prompt_template': phi_2_prompt_template
-    },
-    'Phi-2 DPO Q6_K': {
-        'url': 'https://huggingface.co/TheBloke/phi-2-dpo-GGUF/resolve/main/phi-2-dpo.Q6_K.gguf',
-        'prompt_template': phi_2_dpo_prompt_template
-    },
-    'Phi-3 mini 4k instruct Q4': {
-        'url': 'https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/Phi-3-mini-4k-instruct-q4.gguf',
-        'prompt_template': phi_3_prompt_template
-    },
-    'Phi-3 mini 4k instruct FP16': {
-        'url': 'https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/Phi-3-mini-4k-instruct-fp16.gguf',
-        'prompt_template': phi_3_prompt_template
-    },
     'Mistral 7B Instruct v0.2 Q5_K_M': {
         'url': 'https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q5_K_M.gguf',
         'prompt_template': inst_prompt_template,
