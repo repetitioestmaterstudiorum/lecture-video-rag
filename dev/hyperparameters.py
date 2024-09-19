@@ -29,7 +29,7 @@ best = {
     "generator_max_tokens": 2048,
     "generator_temperature": 0.0,
 }
-
+ 
 second_best = {
     "storage_llm_model_name": "",
     "storage_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
@@ -47,7 +47,7 @@ second_best = {
     "storage_ocr_postprocessing_fn": "",
     "storage_ocr_llm_preprompt": "",
     "storage_average_asr_ocr": False,
-    "retriever_llm_model_name": "",
+    "retriever_llm_model_name": "Llama 3.1 8B Instruct IQ4_XS",
     "retriever_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
     "retriever_reranker_model_name": "mixedbread-ai/mxbai-rerank-large-v1",
     "retriever_reranker_n_docs": 30,
@@ -61,7 +61,7 @@ second_best = {
     "generator_max_tokens": 2048,
     "generator_temperature": 0.0,
 }
-
+ 
 light = {
     "storage_llm_model_name": "",
     "storage_llm_system_message": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
