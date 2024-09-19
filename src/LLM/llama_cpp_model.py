@@ -63,6 +63,10 @@ MODEL_CONFIG = {
         'url': 'https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-IQ4_XS.gguf',
         'prompt_template': llama_3_prompt_template,
     },
+    'Llama 3.1 8B Instruct Q5_K_M': {
+        'url': 'https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf',
+        'prompt_template': llama_3_prompt_template,
+    },
     'Mixtral 13B Laser Dolphin DPO Q6_K': {
         'url': 'https://huggingface.co/TheBloke/laser-dolphin-mixtral-2x7b-dpo-GGUF/resolve/main/laser-dolphin-mixtral-2x7b-dpo.Q6_K.gguf',
         'prompt_template': chatml_prompt_template,
