@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository holds a lecture video search and question answering system, which is based on retrieval-augmented generation. It is also the artifact of my master's thesis and the paper "Enhancing Question Answering in Lecture Videos with a Multimodal Retrieval-Augmented Generation Framework", which was accepted at AIMSA 2024.
+This repository holds a lecture video search and question answering system, which is based on retrieval-augmented generation. It is also the artifact of my master's thesis and the paper "Enhancing Question Answering in Lecture Videos with a Multimodal Retrieval-Augmented Generation Framework", which was accepted at AIMSA 2024 and published in Springer: https://link.springer.com/chapter/10.1007/978-3-031-81542-3_15
 
 ## Code Organization
 
